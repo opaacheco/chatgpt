@@ -14,8 +14,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Main {
 	
 	public static void main(String[] args) throws IOException {
-		Map<String, String> config = ConfigParser.parse("aplication.propeties");
-		String greeting = config.get(greeting);
+		Map<String, String> config = ConfigParser.parse("aplication.properties");
+		String greeting = config.get("greeting");
+		System.out.println(greeting);
 		// TODO Auto-generated method stub
 		OpenAiRequest req = new OpenAiRequest();
 		req.setModel("text-davinci-003");
