@@ -1,0 +1,1 @@
+package pt.pedrogomes.chatgtp.model.request;
