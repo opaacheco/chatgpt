@@ -61,9 +61,21 @@ class ConfigParserTest {
 	}
 
 	@Test
-	void testFileNotFound() {
-		assertThrows(null,()->)
-	}
+    void testFileNotFound() throws IOException {
+//        try {
+//        Map<String, String> config = ConfigParser.parse(
+//                getTestResourcesConfigFilePath("nonexistent.properties")
+//        );
+//        } catch (FileNotFoundException e) {
+//            return;
+//        }
+//
+//        fail("Should have failed");
+
+        assertThrows(FileNotFoundException.class, () -> {
+            ConfigParser.parse(getTestResourcesConfigFilePath("nonexistent.properties"));
+        });
+    }
 
 	private String getTestResourcesConfigFilePath(String filename) {
 		Path resourcesDirectory = Paths.get("src", "test", "resources", filename);
