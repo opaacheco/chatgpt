@@ -1,25 +1,27 @@
 package pt.pedrogomes.chatgpt;
 import pt.pedrogomes.chatgtp.model.request.*;
+import pt.pedrogomes.chatgpt.model.request.OpenAiRequest;
+import pt.pedrogomes.chatgpt.util.ConfigParser;
 import pt.pedrogomes.chatgtp.model.*;
 
+import java.io.IOException;
+import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 public class Main {
-	private static final String token = "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";
 	
-	Chat c = new Chat();
-	
-	
-
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		Map<String, String> config = ConfigParser.parse("aplication.properties");
+		String greeting = config.get("greeting");
+		System.out.println(greeting);
 		// TODO Auto-generated method stub
-		OpenAIrequest req = new OpenAIrequest();
+		OpenAiRequest req = new OpenAiRequest();
 		req.setModel("text-davinci-003");
 		req.setPrompt("You are and AI\nAI:");
-		req.setTemperatura(0.5f);
+		req.setTemperature(0.5f);
 		req.setMaxTokens(60);
 		req.setTopP(1.0f);
 		req.setFrequencyPenalty(0.5f);
